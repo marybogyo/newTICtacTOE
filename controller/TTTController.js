@@ -9,8 +9,13 @@ class TTTController {
     $(window).on("elemKivalaszt", (event) => {
       //console.log(event.detail); ez az a négyzet objektum, amire kattintottink
       //itt hívom majd a modelt, és megkérem hogy számoljon, hogy ki következik,
-      let ertek = this.tttModel.aktualisJatekos();
-      event.detail.setErtek(ertek);
+      let aktObj=event.detail;
+      console.log(aktObj);
+      let index = event.detail.index;
+      console.log(index);
+      let ertek = this.tttModel.aktualisallapot(index);
+      aktObj.setErtek(ertek);
+      
       let kovJa=this.tttModel.kovetkezojatekos();  
       this.infoView.setPelem(kovJa);
     });
